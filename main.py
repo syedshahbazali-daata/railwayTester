@@ -1,18 +1,14 @@
-from flask import Flask, jsonify, request
-import os
-from dotenv import load_dotenv
+from flask import Flask, jsonify
 import requests
-
-load_dotenv()
-
 app = Flask(__name__)
 
 
-# Schema: id, title, author, link, rating
 
 
-@app.route('/')
+# REST API
+@app.route("/")
 def index():
+    
     url = "https://www.subito.it/annunci-lazio/vendita/moto-e-scooter/roma"
     payload = ""
     headers = {
@@ -39,6 +35,5 @@ def index():
 
 
 
-
-if __name__ == '__main__':
-    app.run(debug=True, port=os.getenv("PORT", default=5000))
+if __name__ == "__main__":
+    app.run(port=5000, host="0.0.0.0", debug=True)
